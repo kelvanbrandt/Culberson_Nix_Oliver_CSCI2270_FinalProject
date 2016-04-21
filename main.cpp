@@ -1,45 +1,44 @@
+#include "Hangman.h"
+#include "Mastermind.h"
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
+#include <string>
 
 using namespace std;
 
-bool quitSwitch = false; //quitting the main menu, while loop
-int userChoice = 0;
+void printMenu();
 
-int main()
-{
-    cout<<"__Welcome to Minigames__\n"<<endl; //we can work on the name
+int main() {
+    cout << "__Welcome to Minigames__" << endl << endl; // we can work on the name
 
-    while (!quitSwitch){
+    string user;
+    do {
+        printMenu();
+        getline( cin, user );
+        cin.clear();
 
-        cout<<"Choose a game: "<<endl;
-        cout<<"1. Hangman"<<endl;
-        cout<<"2. Mastermind Memory"<<endl;
-        cout<<"3. Quit"<<endl;
-        cin>>userChoice;
+        if( user == "1" ) { // Hoenigman
+            cout << endl << "==Hangman==" << endl;
+            // ideas:
+            // let's make an encoded list of words in another file
+            // I'm thinking just an XOR encoded list so people can't just look at it and know all the words
+        } else if( user == "2" ) { // Mastermind
+            cout << endl << "==Mastermind Memory==" << endl;
+            // implement rand() for this
+        } else if( user != "3" ) // accepts all invalid input
+            cout << "Please enter a valid input." << endl;
+    } while( user != "3" );
 
-        if (userChoice == 1){    //Hangman
-            cout<<"\n==Hangman=="<<endl;
-        }
+    cout << "Thanks for playing!!" << endl;
 
-        else if (userChoice == 2){   //Mastermind
-            cout<<"\n==Mastermind Memory=="<<endl;
-        }
+    return 0;
+}
 
-        else if (userChoice == 3){   //Quit
-            cout<<"Thanks for playing!!"<<endl;
-            quitSwitch = true;
-        }
-
-        else {    //Invalid Entry
-            cout<<"Please enter a valid input."<<endl;
-        }
-
-
-   }
-
-
-
+void printMenu() {
+    cout << "Choose a game:" << endl <<
+            "1. Hangman" << endl <<
+            "2. Mastermind Memory" << endl <<
+            "3. Quit" << endl;
 }
