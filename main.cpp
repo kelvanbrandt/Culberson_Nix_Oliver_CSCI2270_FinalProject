@@ -9,6 +9,7 @@
 using namespace std;
 
 void printMenu();
+Hangman HT;
 
 int main() {
     cout << "__Welcome to Minigames__" << endl << endl; // we can work on the name
@@ -21,6 +22,7 @@ int main() {
 
         if( user == "1" ) { // Hoenigman
             cout << endl << "==Hangman==" << endl;
+            HT.buildArray();
             // ideas:
             // let's make an encoded list of words in another file
             // I'm thinking just an XOR encoded list so people can't just look at it and know all the words
