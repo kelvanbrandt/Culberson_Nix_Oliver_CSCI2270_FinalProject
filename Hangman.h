@@ -4,34 +4,24 @@
 
 using namespace std;
 
-struct letter{
-    char key = NULL;
-    bool found = false;
-    letter* next = NULL;
-    letter* previous = NULL;
-
-    letter(){};
-
-    letter(char type){
-        key = type;
-
-    }
-
+struct Letter {
+    char key;
+    bool found;
+    letter * next;
+    
+    Letter();
+    Letter( char );
 };
 
-
-class Hangman
-{
+class Hangman {
+    Letter * letArray;
+    
     public:
         Hangman();
         ~Hangman();
-        void buildArray();
-        string setUpGame(int randomChoice);
-        void gameplay(letter* word);
-        letter* buildList(string word);
-    protected:
-    private:
-        string wordArray[4213];
+        string setUpGame( int );
+        void buildWord( string );
+        void gameplay( letter * );
 };
 
 #endif // HANGMAN_H
