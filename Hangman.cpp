@@ -37,7 +37,7 @@ string Hangman::setUpGame(int randomChoice){
     return word;
 }
 
-void Hangman::gameplay(string word){
+void Hangman::gameplay(letter* word){
     int wrongGuess = 5;
     char guess;
     while (wrongGuess != -1){
@@ -45,20 +45,21 @@ void Hangman::gameplay(string word){
         cout<<endl<<"Guess a letter: ";
         cin>>guess;
         cin.ignore();
-        for (int i = 0; i <= word.size(); i++){
-            if (guess == word[i]){
-                found = true;
-                break;
-            }
-        }
-        if (found){
-            //find all occurances and print out word with newly filled in spaces
-        }
-        else {
-            //subtract one of the wrong guess, print word as is, change wrong letter list
-        }
+
     }
 
 
 }
+letter* Hangman::buildList(string word){
+    letter *head = new letter(word[0]);
+    letter *temp = head;
+    for (int i = 1; i < word.size();i++){
+        letter *add = new letter(word[i]);
+        add->previous = temp;
+        temp->next = add;
+        temp = temp->next;
+    }
+    temp->next = NULL;
 
+    return head;
+}
