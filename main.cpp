@@ -9,9 +9,10 @@
 using namespace std;
 
 void printMenu();
-Hangman HT;
+Hangman HT; //instance of hangman class
 
 int main() {
+    srand(time(0)); //allows for a new random choice every time later on.
     cout << "__Welcome to Minigames__" << endl << endl; // we can work on the name
 
     string user;
@@ -20,12 +21,12 @@ int main() {
         getline( cin, user );
         cin.clear();
 
-        if( user == "1" ) { // Hoenigman
+        if( user == "1" ) {
             cout << endl << "==Hangman==" << endl;
-            HT.buildArray();
-            // ideas:
-            // let's make an encoded list of words in another file
-            // I'm thinking just an XOR encoded list so people can't just look at it and know all the words
+            HT.buildArray();                            //build an array from nounList
+            int randomChoice = rand() % 4213 + 0;       //select a random number 0 - arraySize
+            HT.setUpGame(randomChoice);                 //set up the round with the chosen word
+
         } else if( user == "2" ) { // Mastermind
             cout << endl << "==Mastermind Memory==" << endl;
             // implement rand() for this

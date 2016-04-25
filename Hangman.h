@@ -10,6 +10,7 @@ class Hangman
         Hangman();
         ~Hangman();
         void buildArray();
+        void setUpGame(int randomChoice);
     protected:
     private:
         string wordArray[4213];
