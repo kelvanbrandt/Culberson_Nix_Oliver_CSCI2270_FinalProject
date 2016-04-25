@@ -38,13 +38,67 @@ string Hangman::setUpGame(int randomChoice){
 }
 
 void Hangman::gameplay(letter* word){
+    letter *temp = word;
     int wrongGuess = 5;
     char guess;
+    bool finished = false;
     while (wrongGuess != -1){
+        temp = word;
         bool found = false;
         cout<<endl<<"Guess a letter: ";
         cin>>guess;
-        cin.ignore();
+        cin.clear();
+        cout<<"------------------------------"<<endl<<endl;
+        while(temp){
+            finished = true;
+            if (temp->key == guess){
+                found = true;
+                temp->found = true;
+            }
+            temp = temp->next;
+        }
+        temp = word;
+        if (found){
+            cout<<"\nNICE GUESS!!"<<endl<<endl;
+            while (temp){
+                if (!temp->found){
+                    finished = false;
+                }
+                temp = temp->next;
+            }
+            cout<<"\nWrong guesses remaining: "<<wrongGuess<<endl<<endl;
+            cout<<"==========================="<<endl<<endl;
+            temp = word;
+
+        }
+        else if (!found){
+            cout<<"\nSorry, nope."<<endl<<endl;
+            while (temp){
+                if (!temp->found){
+                    finished = false;
+                }
+                temp = temp->next;
+            }
+            temp = word;
+            wrongGuess--;
+            if (wrongGuess != -1){
+                cout<<"\nWrong guesses remaining: "<<wrongGuess<<endl<<endl;
+                cout<<"==========================="<<endl<<endl;}
+        }
+        while (temp){
+                if (temp->found){
+                    cout<<temp->key;
+                }
+                else {
+                    cout<<"_";
+                }
+            temp = temp->next;
+            }
+            cout<<endl;
+        if (finished){
+            cout<<"GREAT JOB, YOU WIN"<<endl<<endl;
+            break;
+        }
 
     }
 
