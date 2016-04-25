@@ -25,8 +25,8 @@ int main() {
             cout << endl << "==Hangman==" << endl;
             HT.buildArray();                            //build an array from nounList
             int randomChoice = rand() % 4213 + 0;       //select a random number 0 - arraySize
-            HT.setUpGame(randomChoice);                 //set up the round with the chosen word
-
+            string word = HT.setUpGame(randomChoice);                 //set up the round with the chosen word
+            HT.gameplay(word);
         } else if( user == "2" ) { // Mastermind
             cout << endl << "==Mastermind Memory==" << endl;
             // implement rand() for this
