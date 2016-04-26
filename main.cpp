@@ -1,9 +1,9 @@
 #include "Hangman.h"
 #include "Mastermind.h"
 
+#include <ctime>
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <string>
 
 using namespace std;
@@ -12,7 +12,7 @@ void printMenu();
 Hangman HT; //instance of hangman class
 
 int main() {
-    srand(time(0)); //allows for a new random choice every time later on.
+    srand(time(NULL)); //allows for a new random choice every time later on.
     cout << "__Welcome to Minigames__" << endl << endl; // we can work on the name
 
     string user;
