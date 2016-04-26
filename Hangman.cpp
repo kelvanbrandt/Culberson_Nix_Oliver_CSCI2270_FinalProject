@@ -87,7 +87,55 @@ void Hangman::gameplay(letter* word){
 
         }
         else if (!found){
-            cout<<"Sorry, nope."<<endl<<endl;
+            cout<<"Sorry, nope."<<endl;
+	    if (wrongGuess==5)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            if (wrongGuess==4)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            if (wrongGuess==3)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+            cout<<" |/  |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            if (wrongGuess==2)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+           cout<<"\\|/  |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            if (wrongGuess==1)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+           cout<<"\\|/  |    "<<endl;
+           cout<<"  \\  |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            if (wrongGuess==0)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+           cout<<"\\|/  |    "<<endl;
+           cout<<" /\\  |    "<<endl;
+            cout<<" ____|____"<<endl;}
             addPreviousTry(guess);
             while (temp){
                 if (!temp->found){
