@@ -37,6 +37,58 @@ string Hangman::setUpGame(int randomChoice){
     return word;
 }
 
+void Hangman::visual(int wrongGuess)
+{
+    if (wrongGuess==5)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            if (wrongGuess==4)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            if (wrongGuess==3)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+            cout<<" |/  |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            if (wrongGuess==2)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+           cout<<"\\|/  |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            if (wrongGuess==1)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+           cout<<"\\|/  |    "<<endl;
+           cout<<"  \\  |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            if (wrongGuess==0)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+           cout<<"\\|/  |    "<<endl;
+           cout<<" /\\  |    "<<endl;
+            cout<<" ____|____"<<endl;}
+}
+
 void Hangman::gameplay(letter* word){
     letter *temp = word;
     int wrongGuess = 5;
@@ -88,54 +140,7 @@ void Hangman::gameplay(letter* word){
         }
         else if (!found){
             cout<<"Sorry, nope."<<endl;
-	    if (wrongGuess==5)
-            {
-            cout<<"  ____    "<<endl;
-            cout<<" |   |    "<<endl;
-            cout<<" O   |    "<<endl;
-            cout<<"     |    "<<endl;
-            cout<<"     |    "<<endl;
-            cout<<" ____|____"<<endl;}
-            if (wrongGuess==4)
-            {
-            cout<<"  ____    "<<endl;
-            cout<<" |   |    "<<endl;
-            cout<<" O   |    "<<endl;
-            cout<<" |   |    "<<endl;
-            cout<<"     |    "<<endl;
-            cout<<" ____|____"<<endl;}
-            if (wrongGuess==3)
-            {
-            cout<<"  ____    "<<endl;
-            cout<<" |   |    "<<endl;
-            cout<<" O   |    "<<endl;
-            cout<<" |/  |    "<<endl;
-            cout<<"     |    "<<endl;
-            cout<<" ____|____"<<endl;}
-            if (wrongGuess==2)
-            {
-            cout<<"  ____    "<<endl;
-            cout<<" |   |    "<<endl;
-            cout<<" O   |    "<<endl;
-           cout<<"\\|/  |    "<<endl;
-            cout<<"     |    "<<endl;
-            cout<<" ____|____"<<endl;}
-            if (wrongGuess==1)
-            {
-            cout<<"  ____    "<<endl;
-            cout<<" |   |    "<<endl;
-            cout<<" O   |    "<<endl;
-           cout<<"\\|/  |    "<<endl;
-           cout<<"  \\  |    "<<endl;
-            cout<<" ____|____"<<endl;}
-            if (wrongGuess==0)
-            {
-            cout<<"  ____    "<<endl;
-            cout<<" |   |    "<<endl;
-            cout<<" O   |    "<<endl;
-           cout<<"\\|/  |    "<<endl;
-           cout<<" /\\  |    "<<endl;
-            cout<<" ____|____"<<endl;}
+	    visual(wrongGuess);
             addPreviousTry(guess);
             while (temp){
                 if (!temp->found){
