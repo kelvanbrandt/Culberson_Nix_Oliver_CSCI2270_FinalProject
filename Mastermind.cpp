@@ -65,8 +65,10 @@ void Mastermind::generateSolution() {
 }
 
 bool Mastermind::parceGuess( string _guess ) {
-	if( _guess.length() != spaces )
+	if( _guess.length() != spaces ) {
+		cout << "Invalid input. Try again." << endl;
 		return false;
+	}
 	for( int i = 0; i < spaces; i ++ )
 		switch( _guess[ i ] ) {
 			case 'R':
@@ -171,9 +173,41 @@ void Mastermind::gameplay() {
 	if( used < guesses )
 		cout << "Good job, you only used " << used << " guesses" << endl <<
 			"to find the right answer.";
-	else
-		cout << "Better luck next time.";
-	cout << endl << endl;
+	else {
+		cout << "Turns out the code was ";
+		for( int i = 0; i < spaces; i ++ ) {
+			switch( solution[ i ] ) {
+				case RED:
+					cout << 'R';
+					break;
+				case BLUE:
+					cout << 'B';
+					break;
+				case YELLOW:
+					cout << 'Y';
+					break;
+				case PURPLE:
+					cout << 'P';
+					break;
+				case ORANGE:
+					cout << 'O';
+					break;
+				case GREEN:
+					cout << 'G';
+					break;
+				case INDIGO:
+					cout << 'I';
+					break;
+				case WHITE:
+					cout << 'W';
+					break;
+				default:
+					cout << '?';
+					break;
+			}
+		}
+	}
+	cout << '.' << endl << "Better luck next time." << endl << endl;
 
 	delete[] solution;
 	delete[] guess;
