@@ -109,7 +109,7 @@ void Hangman::gameplay(letter* word){
             wrongGuess--;
             if (wrongGuess != -1){
                 cout<<"\nWrong tries remaining: "<<wrongGuess<<endl;
-                cout<<"Previous tries: ";
+                cout<<"Previous wrong tries: ";
             for (int i = 0; i < 5; i++){
                 cout<<guessedLetters[i]<<" ";
             }
@@ -120,6 +120,8 @@ void Hangman::gameplay(letter* word){
     if (finished){
             cout<<"\nGREAT JOB, YOU WIN"<<endl<<endl;
             cout<<"==============================================="<<endl;
+            for (int i = 0; i < 5; i++ ){
+            guessedLetters[i]=NULL;}
             break;
         }
 }
@@ -127,6 +129,9 @@ if (wrongGuess == -1){
     temp = word;
     cout<<"\nGAME OVER"<<endl<<endl;
     cout<<"The correct word: ";
+    for (int i = 0; i < 5; i++ ){
+        guessedLetters[i]=NULL;
+    }
     while (temp){
         cout<<temp->key;
         temp = temp->next;
