@@ -1,6 +1,6 @@
 #include "Hangman.h"
 #include "Mastermind.h"
-
+#include <cstdlib>
 #include <ctime>
 #include <iostream>
 #include <fstream>
