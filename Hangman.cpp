@@ -47,7 +47,7 @@ void Hangman::visual(int wrongGuess)
             cout<<"     |    "<<endl;
             cout<<"     |    "<<endl;
             cout<<" ____|____"<<endl;}
-            if (wrongGuess==4)
+            else if (wrongGuess==4)
             {
             cout<<"  ____    "<<endl;
             cout<<" |   |    "<<endl;
@@ -55,7 +55,7 @@ void Hangman::visual(int wrongGuess)
             cout<<" |   |    "<<endl;
             cout<<"     |    "<<endl;
             cout<<" ____|____"<<endl;}
-            if (wrongGuess==3)
+            else if (wrongGuess==3)
             {
             cout<<"  ____    "<<endl;
             cout<<" |   |    "<<endl;
@@ -63,7 +63,7 @@ void Hangman::visual(int wrongGuess)
             cout<<" |/  |    "<<endl;
             cout<<"     |    "<<endl;
             cout<<" ____|____"<<endl;}
-            if (wrongGuess==2)
+            else if (wrongGuess==2)
             {
             cout<<"  ____    "<<endl;
             cout<<" |   |    "<<endl;
@@ -71,7 +71,7 @@ void Hangman::visual(int wrongGuess)
            cout<<"\\|/  |    "<<endl;
             cout<<"     |    "<<endl;
             cout<<" ____|____"<<endl;}
-            if (wrongGuess==1)
+            else if (wrongGuess==1)
             {
             cout<<"  ____    "<<endl;
             cout<<" |   |    "<<endl;
@@ -79,7 +79,7 @@ void Hangman::visual(int wrongGuess)
            cout<<"\\|/  |    "<<endl;
            cout<<"  \\  |    "<<endl;
             cout<<" ____|____"<<endl;}
-            if (wrongGuess==0)
+            else if (wrongGuess==0)
             {
             cout<<"  ____    "<<endl;
             cout<<" |   |    "<<endl;
