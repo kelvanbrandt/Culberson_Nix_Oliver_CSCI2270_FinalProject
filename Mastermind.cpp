@@ -1,11 +1,22 @@
 #include "Mastermind.h"
 
-Mastermind::Mastermind()
-{
-    //ctor
+using namespace std;
+
+Mastermind::Mastermind() {}
+
+Mastermind::~Mastermind() {}
+
+void Mastermind::setDifficulty() {
+    
 }
 
-Mastermind::~Mastermind()
-{
-    //dtor
+void Mastermind::generateSolution() {
+
+}
+
+void Mastermind::print() {
+   
+}
+void Mastermind::gameplay() {
+   
 }
