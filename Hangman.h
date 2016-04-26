@@ -29,9 +29,11 @@ class Hangman
         string setUpGame(int randomChoice);
         void gameplay(letter* word);
         letter* buildList(string word);
+        void addPreviousTry(char letter);
     protected:
     private:
         string wordArray[4213];
+        char guessedLetters[5];
 };
 
 #endif // HANGMAN_H

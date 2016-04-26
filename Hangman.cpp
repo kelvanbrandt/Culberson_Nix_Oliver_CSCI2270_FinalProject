@@ -34,7 +34,6 @@ string Hangman::setUpGame(int randomChoice){
 
     cout<<"You must guess the letters to complete the word"<<endl;
     cout<<"You are allowed 5 incorrect guesses"<<endl;
-    cout<<word<<endl;
     return word;
 }
 
@@ -79,11 +78,17 @@ void Hangman::gameplay(letter* word){
             }
             cout<<endl;
             cout<<"\nWrong tries remaining: "<<wrongGuess<<endl;
+            cout<<"Previous tries: ";
+            for (int i = 0; i < 5; i++){
+                cout<<guessedLetters[i]<<" ";
+            }
+            cout<<endl;
             temp = word;
 
         }
         else if (!found){
             cout<<"Sorry, nope."<<endl<<endl;
+            addPreviousTry(guess);
             while (temp){
                 if (!temp->found){
                     finished = false;
@@ -104,6 +109,11 @@ void Hangman::gameplay(letter* word){
             wrongGuess--;
             if (wrongGuess != -1){
                 cout<<"\nWrong tries remaining: "<<wrongGuess<<endl;
+                cout<<"Previous tries: ";
+            for (int i = 0; i < 5; i++){
+                cout<<guessedLetters[i]<<" ";
+            }
+            cout<<endl;
         }
 
     }
@@ -114,8 +124,15 @@ void Hangman::gameplay(letter* word){
         }
 }
 if (wrongGuess == -1){
+    temp = word;
     cout<<"\nGAME OVER"<<endl<<endl;
-    cout<<"==============================================="<<endl;
+    cout<<"The correct word: ";
+    while (temp){
+        cout<<temp->key;
+        temp = temp->next;
+    }
+
+    cout<<endl<<"==============================================="<<endl<<endl;
 }
 }
 letter* Hangman::buildList(string word){
@@ -130,4 +147,14 @@ letter* Hangman::buildList(string word){
     temp->next = NULL;
 
     return head;
+}
+void Hangman::addPreviousTry(char letter){
+    for (int i = 0; i < 5; i ++){
+        if (guessedLetters[i] == NULL){
+            guessedLetters[i] = letter;
+            break;
+        }
+    }
+
+
 }
