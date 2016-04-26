@@ -27,6 +27,7 @@ class Hangman
         ~Hangman();
         void buildArray();
         string setUpGame(int randomChoice);
+	void visual(int wrongGuess);
         void gameplay(letter* word);
         letter* buildList(string word);
         void addPreviousTry(char letter);
