@@ -1,6 +1,7 @@
 #include "Hangman.h"
 #include "Mastermind.h"
 
+#include <ctime>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -30,7 +31,8 @@ int main() {
             HT.gameplay(playWord); //set up the round with the chosen word
         } else if( user == "2" ) { // Mastermind
             cout << endl << "==Mastermind Memory==" << endl;
-            // implement rand() for this
+            Mastermind M;
+            M.gameplay();
         } else if( user != "3" ) // accepts all invalid input
             cout << "Please enter a valid input." << endl;
     } while( user != "3" );
