@@ -78,7 +78,7 @@ bool Mastermind::parceGuess( string _guess ) {
 			case 'Y':
 				guess[ i ] = YELLOW;
 				break;
-			case 'P': 
+			case 'P':
 				guess[ i ] = PURPLE;
 				break;
 			case 'O':
@@ -142,7 +142,7 @@ void Mastermind::gameplay() {
 
 	cout << endl << "RULES:" << endl <<
 		"1. You have " << guesses << " guesses." << endl <<
-		"2. There are " << spaces << " spaces in the code." << endl <<
+		"2. There are " << spaces << " colors in the code." << endl <<
 		"3. Your colors to guess from are red, blue, yellow, ";
 	if( colors == 4 )
 		cout << "and purple.";
