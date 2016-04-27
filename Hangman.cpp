@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
 
 using namespace std;
 
@@ -92,13 +94,14 @@ void Hangman::visual(int wrongGuess)
 void Hangman::gameplay(letter* word){
     letter *temp = word;
     int wrongGuess = 5;
-    char guess;
+    char guess, user;
     bool finished = false;
     while (wrongGuess != -1){
         temp = word;
         bool found = false;
         cout<<endl<<"Guess a letter: ";
-        cin>>guess;
+        cin>>user;
+        guess = tolower(user);
         cin.clear();
         cout<<"==============================================="<<endl;
         while(temp){
