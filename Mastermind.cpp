@@ -15,25 +15,25 @@ Mastermind::~Mastermind() {}
 void Mastermind::setDifficulty() {
 	cout << endl << "Choose your difficulty." << endl <<
 		"1. Simple" << endl <<
-		" - 4 colors, 3 spaces, 8 guesses, no repeats" << endl <<
+		" - 4 letters to choose from, 3 letters long, 8 guesses, no repeats" << endl <<
 		"2. Normal" << endl <<
-		" - 6 colors, 4 spaces, 12 guesses" << endl <<
+		" - 6 letters to choose from, 4 letters long, 12 guesses" << endl <<
 		"3. Tough" << endl <<
-		" - 8 colors, 5 spaces, 14 guesses" << endl;
+		" - 8 letters to choose from, 5 letters long, 14 guesses" << endl;
 	string user;
 	while( user != "1" && user != "2" && user != "3" ) {
 		getline( cin, user );
 		if( user == "1" ) {
-			colors = 4;
+			letters = 4;
 			spaces = 3;
 			guesses = 8;
 			repeats = false;
 		} else if( user == "2" ) {
-			colors = 6;
+			letters = 6;
 			spaces = 4;
 			guesses = 12;
 		} else if( user == "3") {
-			colors = 8;
+			letters = 8;
 			spaces = 6;
 			guesses = 14;
 		} else
@@ -43,81 +43,53 @@ void Mastermind::setDifficulty() {
 
 void Mastermind::generateSolution() {
 	srand( time( NULL ) );
-	COLOR random;
+	char random;
 	if( repeats )
-		for( int i = 0; i < spaces; i ++ ) {
-			random = ( COLOR ) ( rand() % colors );
-			solution[ i ] = random;
-		}
+		for( int i = 0; i < spaces; i ++ )
+			solution += rand() % letters + 'A';
 	else {
-		COLOR colorList[ colors ];
-		for( int i = 0; i < colors; i ++ )
-			colorList[ i ] = ( COLOR ) i;
-		int remaining = colors;
+		char letterList[ letters ];
+		for( int i = 0; i < letters; i ++ )
+			letterList[ i ] = i + 'A';
+		int remaining = letters;
 		for( int i = 0; i < spaces; i ++ ) {
-			random = ( COLOR ) ( rand() % remaining );
-			solution[ i ] = colorList[ random ];
+			solution += letterList[ random = rand() % remaining ];
 			for( int j = random; j < remaining - 1; j ++ )
-				colorList[ j ] = colorList[ j + 1 ];
+				letterList[ j ] = letterList[ j + 1 ];
 			remaining --;
 		}
 	}
 }
 
+<<<<<<< HEAD
 bool Mastermind::parceGuess( string _guess ) {
 	if( _guess.length() != spaces ) {
+=======
+void Mastermind::parseGuess() {
+	cout << "> ";
+	getline( cin, guess );
+	cin.clear();
+	if( guess.length() != spaces ) {
+>>>>>>> origin/master
 		cout << "Invalid input. Try again." << endl;
 		return false;
 	}
 	for( int i = 0; i < spaces; i ++ )
-		switch( _guess[ i ] ) {
-			case 'R':
-				guess[ i ] = RED;
-				break;
-			case 'B':
-				guess[ i ] = BLUE;
-				break;
-			case 'Y':
-				guess[ i ] = YELLOW;
-				break;
-			case 'P': 
-				guess[ i ] = PURPLE;
-				break;
-			case 'O':
-				if( colors > 4 ) {
-					guess[ i ] = ORANGE;
-					break;
-				}
-			case 'G':
-				if( colors > 4 ) {
-					guess[ i ] = GREEN;
-					break;
-				}
-			case 'I':
-				if( colors > 6 ) {
-					guess[ i ] = INDIGO;
-					break;
-				}
-			case 'W':
-				if( colors > 6 ) {
-					guess[ i ] = WHITE;
-					break;
-				}
-			default:
-				cout << "Invalid input. Try again." << endl;
-				return false;
+		if( guess[ i ] < 'A' || 'A' + letters <= guess[ i ] ) {
+			cout << "Invalid input. Try again." << endl;
+			return false;
 		}
 	return true;
 }
 
 int Mastermind::accuracy() {
-	int colorplace = 0, coloronly = 0;
+	int letterplace = 0, letteronly = 0;
 	int length = 0;
 	int unmatchedS[ spaces ], unmatchedG[ spaces ];
 
 	for( int i = 0; i < spaces; i ++ )
 		if( solution[ i ] == guess[ i ] )
-			colorplace ++;
+			letterplace ++;
 		else {
 			unmatchedG[ length ] = guess[ i ];
 			unmatchedS[ length ] = solution[ i ];
@@ -126,46 +98,37 @@ int Mastermind::accuracy() {
 	for( int i = 0; i < length; i ++ )
 		for( int j = 0; j < length; j ++ )
 			if( unmatchedG[ i ] == unmatchedS[ j ] ) {
-				unmatchedS[ j ] = ( COLOR ) -1;
-				coloronly ++;
+				unmatchedS[ j ] = ( char ) 0;
+				letteronly ++;
 			}
 
-	cout << "Correct color & location : " << colorplace << '.' << endl <<
-					"Correct color            : " << coloronly << '.' << endl;
+	cout << "Correct letter & location : " << letterplace << '.' << endl <<
+					"Correct letter            : " << letteronly << '.' << endl;
 
-	return colorplace;
+	return letterplace;
 }
 
 void Mastermind::gameplay() {
 	setDifficulty();
-	solution = new COLOR[ colors ];
-	guess = new COLOR[ colors ];
+	solution = new char[ letters ];
+	guess = new char[ letters ];
 	generateSolution();
 
 	cout << endl << "RULES:" << endl <<
-		"1. You have " << guesses << " guesses." << endl <<
-		"2. There are " << spaces << " spaces in the code." << endl <<
-		"3. Your colors to guess from are red, blue, yellow, ";
-	if( colors == 4 )
-		cout << "and purple.";
-	else if( colors == 6 )
-		cout << "purple," << endl <<
-			"    orange, and green.";
-	else if( colors == 8 )
-		cout << "purple," << endl <<
-			"    orange, green, indigo, and white.";
-	cout << endl <<
-		"4. Guess in the form \"RBYP\" if you think the code" << endl <<
-		"    is red blue yellow purple in that order." << endl;
+		"1. You have " << guesses << " guesses to crack the code." << endl <<
+		"2. The possible letters used are ";
+	for( char i = 0; i < letters; i ++ )
+		cout << ( char ) ( i + 'A' );
+	cout << "3. There are " << spaces << " letters in the code and " << repeats ? "some letters may" : "the letters do not" << " repeat." << endl <<
+		"4. Guess in the form \"";
+	for( char i = 0; i < spaces; i ++ )
+		cout << ( char ) ( i + 'A' );
+	cout << "\"." << endl;
 
-	string user;
 	int used;
 	for( used = 0; used < guesses; used ++ ) {
 		cout << endl << "Guesses remaining: " << guesses - used << endl;
-		do {
-			getline( cin, user );
-			cin.clear();
-		} while( !parceGuess( user ) );
+		while( !parseGuess() ) {};
 		if( accuracy() == spaces )
 			break;
 	}

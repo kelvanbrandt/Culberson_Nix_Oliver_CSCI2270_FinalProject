@@ -3,19 +3,17 @@
 
 #include <string>
 
-enum COLOR : char { RED, BLUE, YELLOW, PURPLE, ORANGE, GREEN, INDIGO, WHITE };
-
 class Mastermind {
-	COLOR * solution, * guess;
+	std::string solution, guess;
 	bool repeats;
-	int colors, spaces, guesses;
+	int letters, spaces, guesses;
 	
 	public:
 		Mastermind();
 		~Mastermind();
 		void setDifficulty();
 		void generateSolution();
-		bool parceGuess( std::string );
+		void parseGuess();
 		int accuracy();
 		void gameplay();
 };

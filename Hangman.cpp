@@ -37,6 +37,58 @@ string Hangman::setUpGame(int randomChoice){
     return word;
 }
 
+void Hangman::visual(int wrongGuess)
+{
+    if (wrongGuess==5)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            else if (wrongGuess==4)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            else if (wrongGuess==3)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+            cout<<" |/  |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            else if (wrongGuess==2)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+           cout<<"\\|/  |    "<<endl;
+            cout<<"     |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            else if (wrongGuess==1)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+           cout<<"\\|/  |    "<<endl;
+           cout<<"  \\  |    "<<endl;
+            cout<<" ____|____"<<endl;}
+            else if (wrongGuess==0)
+            {
+            cout<<"  ____    "<<endl;
+            cout<<" |   |    "<<endl;
+            cout<<" O   |    "<<endl;
+           cout<<"\\|/  |    "<<endl;
+           cout<<" /\\  |    "<<endl;
+            cout<<" ____|____"<<endl;}
+}
+
 void Hangman::gameplay(letter* word){
     letter *temp = word;
     int wrongGuess = 5;
@@ -87,7 +139,8 @@ void Hangman::gameplay(letter* word){
 
         }
         else if (!found){
-            cout<<"Sorry, nope."<<endl<<endl;
+            cout<<"Sorry, nope."<<endl;
+	    visual(wrongGuess);
             addPreviousTry(guess);
             while (temp){
                 if (!temp->found){
@@ -109,7 +162,7 @@ void Hangman::gameplay(letter* word){
             wrongGuess--;
             if (wrongGuess != -1){
                 cout<<"\nWrong tries remaining: "<<wrongGuess<<endl;
-                cout<<"Previous tries: ";
+                cout<<"Previous wrong tries: ";
             for (int i = 0; i < 5; i++){
                 cout<<guessedLetters[i]<<" ";
             }
@@ -120,6 +173,8 @@ void Hangman::gameplay(letter* word){
     if (finished){
             cout<<"\nGREAT JOB, YOU WIN"<<endl<<endl;
             cout<<"==============================================="<<endl;
+            for (int i = 0; i < 5; i++ ){
+            guessedLetters[i]=NULL;}
             break;
         }
 }
@@ -127,6 +182,9 @@ if (wrongGuess == -1){
     temp = word;
     cout<<"\nGAME OVER"<<endl<<endl;
     cout<<"The correct word: ";
+    for (int i = 0; i < 5; i++ ){
+        guessedLetters[i]=NULL;
+    }
     while (temp){
         cout<<temp->key;
         temp = temp->next;
