@@ -13,7 +13,7 @@ class Mastermind {
 		~Mastermind();
 		void setDifficulty();
 		void generateSolution();
-		void parseGuess();
+		bool parseGuess();
 		int accuracy();
 		void gameplay();
 };

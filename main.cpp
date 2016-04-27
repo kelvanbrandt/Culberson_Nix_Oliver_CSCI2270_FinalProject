@@ -1,10 +1,7 @@
 #include "Hangman.h"
 #include "Mastermind.h"
-<<<<<<< HEAD
 
-=======
 #include <cstdlib>
->>>>>>> origin/master
 #include <ctime>
 #include <iostream>
 #include <fstream>
@@ -35,19 +32,11 @@ int main() {
             letter *playWord = HT.buildList(word);	//breaks word into a linked list of structs to determine if found and print
 
             HT.gameplay(playWord); //play the round with the chosen word
-
         } else if( user == "2" ) { // Mastermind
             cout << endl << "==Mastermind Memory==" << endl;
             Mastermind M;
-<<<<<<< HEAD
-            M.gameplay();
-        } else if( user != "3" ) // accepts all invalid input
-=======
-
             M.gameplay();	//contains all functions for mastermind game
-
-        } else if( user != "3" ) // accepts all invalid input 
->>>>>>> origin/master
+        } else if( user != "3" ) // accepts all invalid input
             cout << "Please enter a valid input." << endl;
     } while( user != "3" );
 

@@ -7,6 +7,7 @@
 using namespace std;
 
 Mastermind::Mastermind() {
+	solution = "";
 	repeats = true;
 }
 
@@ -61,16 +62,12 @@ void Mastermind::generateSolution() {
 	}
 }
 
-<<<<<<< HEAD
-bool Mastermind::parceGuess( string _guess ) {
-	if( _guess.length() != spaces ) {
-=======
-void Mastermind::parseGuess() {
+
+bool Mastermind::parseGuess() {
 	cout << "> ";
 	getline( cin, guess );
 	cin.clear();
 	if( guess.length() != spaces ) {
->>>>>>> origin/master
 		cout << "Invalid input. Try again." << endl;
 		return false;
 	}
@@ -110,17 +107,16 @@ int Mastermind::accuracy() {
 
 void Mastermind::gameplay() {
 	setDifficulty();
-	solution = new char[ letters ];
-	guess = new char[ letters ];
 	generateSolution();
 
 	cout << endl << "RULES:" << endl <<
 		"1. You have " << guesses << " guesses to crack the code." << endl <<
-		"2. The possible letters used are ";
-	for( char i = 0; i < letters; i ++ )
-		cout << ( char ) ( i + 'A' );
-	cout << "3. There are " << spaces << " letters in the code and " << repeats ? "some letters may" : "the letters do not" << " repeat." << endl <<
-		"4. Guess in the form \"";
+		"2. The possible letters used are A";
+	for( char i = 1; i < letters; i ++ )
+		cout << ' ' << ( char ) ( i + 'A' );
+	cout << endl << "3. There are " << spaces << " letters in the code and " <<
+		( repeats ? "some letters may" : "the letters do not" ) << " repeat." <<
+		endl << "4. Guess in the form \"";
 	for( char i = 0; i < spaces; i ++ )
 		cout << ( char ) ( i + 'A' );
 	cout << "\"." << endl;
@@ -135,43 +131,11 @@ void Mastermind::gameplay() {
 	cout << endl;
 	if( used < guesses )
 		cout << "Good job, you only used " << used << " guesses" << endl <<
-			"to find the right answer.";
+			"to find the right answer." << endl;
 	else {
 		cout << "Turns out the code was ";
-		for( int i = 0; i < spaces; i ++ ) {
-			switch( solution[ i ] ) {
-				case RED:
-					cout << 'R';
-					break;
-				case BLUE:
-					cout << 'B';
-					break;
-				case YELLOW:
-					cout << 'Y';
-					break;
-				case PURPLE:
-					cout << 'P';
-					break;
-				case ORANGE:
-					cout << 'O';
-					break;
-				case GREEN:
-					cout << 'G';
-					break;
-				case INDIGO:
-					cout << 'I';
-					break;
-				case WHITE:
-					cout << 'W';
-					break;
-				default:
-					cout << '?';
-					break;
-			}
-		}
+		for( int i = 0; i < spaces; i ++ )
+			cout << solution[ i ];
+		cout << '.' << endl << "Better luck next time." << endl << endl;
 	}
-	cout << '.' << endl << "Better luck next time." << endl << endl;
-
-	delete[] solution;
-	delete[] guess;
 }
