@@ -27,7 +27,7 @@ Hangman:For Hangman our program chooses a random word from a list of thousands 
 The only bug we are experiencing at the moment occurs after the user plays a game of hangman. After the game ends it is suppose to print the menu and ask for an input but instead it prints the menu twice.INSTRUCTIONS FOR RUNNING (through terminal, assuming git is downloaded):
 	1. In terminal on your local machine, navigate to your desktop (cd Desktop/)
 	
-	2. Type git clone “https://github.com/scoopaldish/Culberson_Nix_Oliver_CSCI2270_FinalProject.git”
+	2. Type “git clone https://github.com/scoopaldish/Culberson_Nix_Oliver_CSCI2270_FinalProject.git” or copy link from gitHub
 
 	3. Navigate into file (cd Culberson_Nix_Oliver_CSCI2270_FinalProject/)
 
