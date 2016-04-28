@@ -20,7 +20,7 @@ void Mastermind::setDifficulty() {
 		"2. Normal" << endl <<
 		" - 6 letters to choose from, 4 letters long, 12 guesses" << endl <<
 		"3. Tough" << endl <<
-		" - 8 letters to choose from, 5 letters long, 14 guesses" << endl;
+		" - 8 letters to choose from, 6 letters long, 14 guesses" << endl;
 	string user;
 	while( user != "1" && user != "2" && user != "3" ) {
 		getline( cin, user );
@@ -100,7 +100,7 @@ int Mastermind::accuracy() {
 			}
 
 	cout << "Correct letter & location : " << letterplace << '.' << endl <<
-					"Correct letter            : " << letteronly << '.' << endl;
+					"Correct letter, wrong location : " << letteronly << '.' << endl;
 
 	return letterplace;
 }
