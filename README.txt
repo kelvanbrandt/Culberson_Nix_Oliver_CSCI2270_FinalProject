@@ -25,9 +25,11 @@ Hangman:For Hangman our program chooses a random word from a list of thousands 
 -Builds arrays to store all values eg. locations, letters, etc.Our program is capable of running in Code::Blocks and is completely self contained, not requiring any third party libraries (it does require the nounList.cpp to be included in the program’s folder). It will run on any environment that compiles C++ and accepts C++11 libraries. 
 
 The only bug we are experiencing at the moment occurs after the user plays a game of hangman. After the game ends it is suppose to print the menu and ask for an input but instead it prints the menu twice.INSTRUCTIONS FOR RUNNING (through terminal, assuming git is downloaded):
+Note: DO NOT TYPE QUOTES, just what is inside them.
+
 	1. In terminal on your local machine, navigate to your desktop (cd Desktop/)
 	
-	2. Type “git clone https://github.com/scoopaldish/Culberson_Nix_Oliver_CSCI2270_FinalProject.git” or copy link from gitHub
+	2. Type “git clone https://github.com/scoopaldish/Culberson_Nix_Oliver_CSCI2270_FinalProject.git” or copy link from gitHub 
 
 	3. Navigate into file (cd Culberson_Nix_Oliver_CSCI2270_FinalProject/)
 
@@ -40,3 +42,7 @@ The only bug we are experiencing at the moment occurs after the user plays a gam
 	7. Type “./Game” and click enter
 
 	8. Have fun!!!!
+
+	9. From now on, you can simply go into your terminal, navigate into our project’s file and type “./Game” and 
+	click enter. 
+	Please ensure nounList.txt is in the same folder, in order to find words for hangman.
