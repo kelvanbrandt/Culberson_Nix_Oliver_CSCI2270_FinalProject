@@ -9,45 +9,47 @@
 
 using namespace std;
 
-void printMenu();
+char printMenu();
 Hangman HT; //instance of hangman class
+Mastermind M;
 
 int main() {
     srand(time(NULL)); //allows for a new random choice every time later on.
-    cout << "__Welcome to Minigames__" << endl << endl; 
+    cout << "__Welcome to Minigames__" << endl << endl;
+    char option;
+    string word;
+    int randomChoice;
+    letter *playWord = new letter;
 
-    string user;
-    do {
-        printMenu();
-        getline( cin, user );
-        cin.clear();
+    do{
+        option = printMenu();
+        switch(option){
+            case '1':   cout << endl << "==Hangman==" << endl;
+                        HT.buildArray();                            //build an array from list of words
+                        randomChoice = rand() % 4213 + 0;       //select a random number for the word array
+                        word = HT.setUpGame(randomChoice);	//uses random number to set up game with random word
+                        playWord = HT.buildList(word);	//breaks word into a linked list of structs to determine if found and print
+                        HT.gameplay(playWord); //play the round with the chosen word
+                        break;
 
-        if( user == "1" ) {
-            cout << endl << "==Hangman==" << endl;
-            HT.buildArray();                            //build an array from list of words
+            case '2':   cout << endl << "==Mastermind Memory==" << endl;
+                        M.gameplay();	//contains all functions for mastermind game
+                        break;
 
-            int randomChoice = rand() % 4213 + 0;       //select a random number for the word array
-            string word = HT.setUpGame(randomChoice);	//uses random number to set up game with random word
+            default:    cout << "Thanks for playing!!" << endl;
 
-            letter *playWord = HT.buildList(word);	//breaks word into a linked list of structs to determine if found and print
-
-            HT.gameplay(playWord); //play the round with the chosen word
-        } else if( user == "2" ) { // Mastermind
-            cout << endl << "==Mastermind Memory==" << endl;
-            Mastermind M;
-            M.gameplay();	//contains all functions for mastermind game
-        } else if( user != "3" ) // accepts all invalid input
-            cout << "Please enter a valid input." << endl;
-    } while( user != "3" );
-
-    cout << "Thanks for playing!!" << endl;
+        }
+    }while(option != '3');
 
     return 0;
 }
 
-void printMenu() {
+char printMenu() {
+    char option;
     cout << "Choose a game:" << endl <<
             "1. Hangman" << endl <<
             "2. Mastermind Memory" << endl <<
             "3. Quit" << endl;
+            cin >> option;
+            return option;
 }
